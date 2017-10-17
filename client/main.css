@@ -1,0 +1,13 @@
+/* CSS declarations go here */
+#center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    height: 100px;
+}
+
+body{
+    background-color: #a3b9a360;
+}
