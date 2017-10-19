@@ -8,8 +8,7 @@ export default class SideBar extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {open: false, navigate:false};
-    console.log(this.props.logout)
+    this.state = {open: false};
   }
 
   handleToggle = () => this.setState({open: !this.state.open});
@@ -18,15 +17,10 @@ export default class SideBar extends React.Component {
 
   render() {
 
-    if (this.state.navigate) {
-      this.props.logout();
-      return <Redirect to="/login" push={true} />
-    }
-
     return (
       <div>
         <RaisedButton
-          label="Open Drawer"
+          label="|||"
           onClick={this.handleToggle}
         />
         <Drawer
@@ -35,8 +29,9 @@ export default class SideBar extends React.Component {
           open={this.state.open}
           onRequestChange={(open) => this.setState({open})}
         >
-          <MenuItem onClick={this.handleClose}>Get Token</MenuItem>
-          <MenuItem onClick={() => this.setState({ navigate: true })}>Logout</MenuItem>
+          <MenuItem href={"/gettoken"}>Get Token</MenuItem>
+          <MenuItem href={"/recived/1"}>recived</MenuItem>
+          <MenuItem href={"/logout"}>Logout</MenuItem>
         </Drawer>
       </div>
     );

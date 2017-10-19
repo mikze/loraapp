@@ -1,14 +1,15 @@
 import React from 'react'
 import SideBar from '../sideBar'
+import CircularProgress from 'material-ui/CircularProgress';
 import { Meteor } from 'meteor/meteor';
 import { Route, Redirect } from 'react-router-dom'
 
 const Layout = ({component: Component, ...rest}) => {
-
-  {console.log(rest.location)}
-    return (
+    console.log('in layout', rest.userId);
+    if(rest.userId !== undefined)
+    {return (
       <Route {...rest} render={matchProps => (
-        Meteor.userId() ? (<div>
+        rest.userId ? (<div>
             <SideBar />
             <Component {...matchProps} />
         </div>) :
@@ -19,7 +20,11 @@ const Layout = ({component: Component, ...rest}) => {
           }}/>
         )
       )} />
-    )
+    )}
+    else{
+       
+       return(<div id="center"> <CircularProgress size={80} thickness={7} /> </div>)
+    }
   };
 
   export default Layout 

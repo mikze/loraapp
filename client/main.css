@@ -9,5 +9,9 @@
 }
 
 body{
-    background-color: #a3b9a360;
+    background-color: #a2b8a250;
+}
+
+.inline{
+    display: inline-block;
 }

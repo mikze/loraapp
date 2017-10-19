@@ -4,6 +4,7 @@ import { Switch } from 'react-router'
 import LiveRecivedData from '../../components/liveRecivedData'
 import Measurement from '../../components/measurement'
 import Login from '../../components/login'
+import Logout from '../../components/logout'
 import Layout from '../../components/layout'
 import GetApiToken from '../../components/getApiToken'
 import Main from '../../components/main'
@@ -12,18 +13,25 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
 
+
 export const Routes = props =>
-<MuiThemeProvider>
-<Router history={browserHistory}>
 
-<Switch>
+{  
 
-  <Layout path="/measurement" component={Measurement}/>
-  <Layout path="/recived/:id" component={LiveRecivedData}/>
-  <Layout path="/gettoken" component={GetApiToken}/>
   
-  <Route path="/login" component={Login}/>
-</Switch>
+  return(<MuiThemeProvider>
+  <Router history={browserHistory}>
 
-</Router>
-</MuiThemeProvider>
+  <Switch>
+
+    <Layout exact path="/" component={Main} />
+    <Layout path="/measurement" component={Measurement}/>
+    <Layout path="/recived/:id" component={LiveRecivedData}/>
+    <Layout path="/gettoken" component={GetApiToken}/>
+    
+    <Route path="/login" component={Login}/>
+    <Route path="/logout" component={Logout}/>
+  </Switch>
+
+  </Router>
+  </MuiThemeProvider>)}

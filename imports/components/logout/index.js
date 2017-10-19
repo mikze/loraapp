@@ -1,15 +1,14 @@
-import Layout from './layout.jsx'
+import Logout from './logout.jsx'
 import { Meteor } from 'meteor/meteor';
 import { composeWithTracker } from 'react-komposer';
 
-
 const composer = ({ router }, onData) => {
 
-    const userId =  Meteor.user()
-
+    const logout = () => Meteor.logout();
+    
     onData(null, {
-        userId
+        logout
     });
 };
 
-export default composeWithTracker(composer)(Layout);
+export default composeWithTracker(composer)(Logout);
