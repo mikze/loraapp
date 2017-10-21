@@ -1,6 +1,6 @@
 import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
-import { Route, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { Meteor } from 'meteor/meteor';
 
 export default Login = props => props.user ?  (
