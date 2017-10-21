@@ -1,4 +1,4 @@
-import Measurement from './measurement.jsx'
+import ListOfMeasurements from './listOfMeasurements.jsx'
 import { composeWithTracker } from 'react-komposer';
 import { Measurements } from '../../api/measurements'
 import { Meteor } from 'meteor/meteor';
@@ -12,4 +12,4 @@ const composer = ( props, onData ) => {
   }
 };
 
-export default composeWithTracker( composer )( Measurement );
+export default composeWithTracker( composer )( ListOfMeasurements );

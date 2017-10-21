@@ -1,10 +1,11 @@
 import { Mongo } from 'meteor/mongo';
+import { Meteor } from 'meteor/meteor';
 // import ChatSchema from './schema.js';
 
 const Measurements = new Mongo.Collection('measurements');
 
 if(Meteor.isServer){Meteor.publish( 'measurements', function() {
-    return Measurements.find();
+    return Measurements.find({'ownerId': this.userId});
   });
   
   WebApp.connectHandlers.use('/hello', (req, res, next) => {

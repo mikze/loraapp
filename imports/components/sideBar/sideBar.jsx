@@ -30,6 +30,7 @@ export default class SideBar extends React.Component {
           onRequestChange={(open) => this.setState({open})}
         >
           <MenuItem href={"/gettoken"}>Get Token</MenuItem>
+          <MenuItem href={"/listofmeasurements"}>List of measurements</MenuItem>
           <MenuItem href={"/recived/1"}>recived</MenuItem>
           <MenuItem href={"/logout"}>Logout</MenuItem>
         </Drawer>

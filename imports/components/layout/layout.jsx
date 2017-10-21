@@ -5,7 +5,6 @@ import { Meteor } from 'meteor/meteor';
 import { Route, Redirect } from 'react-router-dom'
 
 const Layout = ({component: Component, ...rest}) => {
-    console.log('in layout', rest.userId);
     if(rest.userId !== undefined)
     {return (
       <Route {...rest} render={matchProps => (

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, browserHistory } from 'react-router-dom'
 import { Switch } from 'react-router'
 import LiveRecivedData from '../../components/liveRecivedData'
-import Measurement from '../../components/measurement'
+import ListOfMeasurements from '../../components/listOfMeasurements'
 import Login from '../../components/login'
 import Logout from '../../components/logout'
 import Layout from '../../components/layout'
@@ -25,7 +25,7 @@ export const Routes = props =>
   <Switch>
 
     <Layout exact path="/" component={Main} />
-    <Layout path="/measurement" component={Measurement}/>
+    <Layout path="/listOfMeasurements" component={ListOfMeasurements}/>
     <Layout path="/recived/:id" component={LiveRecivedData}/>
     <Layout path="/gettoken" component={GetApiToken}/>
     
