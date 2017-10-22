@@ -12,7 +12,7 @@ if(Meteor.isServer){Meteor.publish( 'measurements', function() {
     if(req.method === 'POST' && req.body.token === 1234)
     {
       res.writeHead(200);
-    res.end(`inesrt data ${req.body.xD} ${req.body.token}`);
+    res.end(`inesrt data ${req.body.xD} ${req.body.token} ${req.body.value}`);
   }
     else{
       res.end(`ERROR PAGE NOT FOUND`);}

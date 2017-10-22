@@ -9,7 +9,7 @@ const composer = ( props, onData ) => {
   const matchingMeasurements = props.match.params.id;
 
   if ( subscription.ready() ) {
-    const measurements = Measurements.find({_id: matchingMeasurements}).fetch();
+    const measurements = Measurements.findOne({_id: matchingMeasurements});
     onData( null, {measurements} );
   }
 };
