@@ -30,8 +30,9 @@ export default class ShowData extends React.Component {
     return(<div>
         <FlatButton label="Show chart" 
                               onTouchTap={() => this.pushelement()}/>
+
         <Chart data={this.state.data} params={this.state.params}/>
-        
+
         </div>)}
 
 }

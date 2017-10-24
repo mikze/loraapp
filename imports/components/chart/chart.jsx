@@ -27,8 +27,7 @@ export default class Chart extends React.Component {
         <CartesianGrid strokeDasharray="3 3"/>
         <Tooltip/>
         <Legend />
-        <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+        {this.props.lines.map(x =>  <Line type="monotone" dataKey={x} stroke="#8884d8" activeDot={{r: 8}}/>)}
         </LineChart>
         {this.state.params}
         </div>)}

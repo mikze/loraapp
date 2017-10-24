@@ -1,6 +1,7 @@
 import React from 'react'
 import FlatButton from 'material-ui/FlatButton';
 import ShowData from '../showData'
+import ListOfCharts from '../listOfCharts'
 
 
 
@@ -18,7 +19,7 @@ export default class Measurement extends React.Component {
   render()
     {
     return(<div>{this.props.match.params.id}<br/>
-           <div id="chart"><ShowData data={this.state.data}/></div>
+           <ListOfCharts id={this.props.match.params.id} data={this.state.data}/>
            </div>)
     }
 }
