@@ -5,6 +5,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import Chart from '../chart'
+import CreateNewChart from '../createNewChart'
 
 export default class ListOfCharts extends React.Component{
 
@@ -16,6 +17,7 @@ export default class ListOfCharts extends React.Component{
             create:false,
             params: ['xD'],
             lines: [],
+            description: 'description'
           };
     
                 this.handleOpen = this.handleOpen.bind(this);
@@ -28,9 +30,10 @@ export default class ListOfCharts extends React.Component{
         this.setState({data:nextProps.data});
       }
 
-handleOpen = lines => {
+handleOpen = (lines, description) => {
     this.setState({lines},
-        this.setState({open: true}));
+        this.setState({description},
+           this.setState({open: true})));
   };
 
   handleClose = () => {
@@ -69,7 +72,7 @@ render()
         onClick={(this.handleCreate)}
         />
         
-        {this.props.measurements.map(x => <List><ListItem primaryText={x.name} onClick={() => this.handleOpen(x.lines)}/></List>)} 
+        {this.props.measurements.map(x => <List><ListItem primaryText={x.name} onClick={() => this.handleOpen(x.lines, x.description)}/></List>)} 
         
         <Dialog
         title="Dialog With Actions"
@@ -78,7 +81,7 @@ render()
         open={this.state.create}
         onRequestClose={this.handleCreateClose}
       >
-      Create new chart
+      <CreateNewChart data={this.state.data}/>
       </Dialog>
 
     <Dialog
@@ -88,7 +91,8 @@ render()
     open={this.state.open}
     onRequestClose={this.handleClose}
   >
-  <Chart data={this.state.data} params={this.state.params} lines={this.state.lines}/>
+  <Chart data={this.state.data} params={this.state.params} lines={this.state.lines} />
+  Description: {this.state.description}
   </Dialog>
     
     </div>)
