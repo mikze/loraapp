@@ -4,9 +4,7 @@ import { Meteor } from 'meteor/meteor';
 
 const Measurements = new Mongo.Collection('measurements');
 
-if(Meteor.isServer){Meteor.publish( 'measurements', function() {
-    return Measurements.find({'ownerId': this.userId});
-  });
+if(Meteor.isServer){
   
   WebApp.connectHandlers.use('/hello', (req, res, next) => {
     if(req.method === 'POST' && req.body.token === 1234)

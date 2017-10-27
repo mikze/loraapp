@@ -1,4 +1,6 @@
 import { Meteor } from 'meteor/meteor';
+import '/imports/api/measurements/server';
+
 import '/imports/api/measurements';
 
 const settings = Meteor.settings.google;

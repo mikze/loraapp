@@ -1,2 +1,3 @@
-import  {Measurements} from './measurements.jsx'
-export {Measurements};
+export {addNewChart} from './methods.js';
+export { actions } from './actions.js';
+export {Measurements} from './measurements.js'
