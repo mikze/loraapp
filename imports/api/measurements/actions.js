@@ -1,4 +1,4 @@
-import {addNewChart as addNewChartMethod} from './methods.js';
+import {addNewChart as addNewChartMethod, addNewMeasurement as addNewMeasurementMethod} from './methods.js';
 
 const addNewChart = (measurementName, chartName, description, lines) =>
 new Promise((resolve, reject) => {
@@ -11,8 +11,20 @@ new Promise((resolve, reject) => {
     });
 });
 
+const addNewMeasurement = (id,text,description) =>
+new Promise((resolve, reject) => {
+    addNewMeasurementMethod.call({id,text,description}, (err, res) => {
+        if (err) {
+            const error = new Error(err);
+            reject(error);
+        }
+        resolve(res);
+    });
+});
+
 const actions = {
-    addNewChart
+    addNewChart,
+    addNewMeasurement
 };
 
 export { actions };

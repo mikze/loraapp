@@ -14,3 +14,15 @@ export const addNewChart = new SimpleSchema({
     },
     'lines.$': String
 });
+
+export const addNewMeasurement = new SimpleSchema({
+    id: {
+        type: String
+    },
+    text: {
+        type: String
+    },
+    description: {
+        type: String
+    }
+});
