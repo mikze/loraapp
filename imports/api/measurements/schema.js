@@ -26,3 +26,12 @@ export const addNewMeasurement = new SimpleSchema({
         type: String
     }
 });
+
+export const addNewLine = new SimpleSchema({
+    measurementName: {
+        type: String
+    },
+    lines:{
+        type: String
+    },
+});

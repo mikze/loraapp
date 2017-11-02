@@ -8,7 +8,7 @@ import { Measurements} from '../measurements.js';
         const user = Meteor.users.findOne({ token : req.body.token });
 
         const data = req.body.data;
-        
+
         Measurements.update({_id: req.body.id,ownerId:user._id}, {$push: {data}});
 
         res.writeHead(200);

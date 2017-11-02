@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
-import {addNewChart as addNewChartSchema, addNewMeasurement as addNewMeasurementSchema} from './schema.js';
+import {addNewChart as addNewChartSchema,
+        addNewMeasurement as addNewMeasurementSchema,
+        addNewLine as addNewLineSchema} from './schema.js';
 import {Measurements} from './measurements.js'
 
 export const addNewChart = new ValidatedMethod({
@@ -26,6 +28,22 @@ export const addNewMeasurement = new ValidatedMethod({
         const user = Meteor.user();
         if (user) {
             return Measurements.insert({_id:id, ownerId:Meteor.userId(),data:[],text:text,description:description});
+        }
+
+        throw new Meteor.Error(
+            'no-permissions-to-set-admin',
+            'You do not have permission to set admin',
+        );
+    },
+});
+
+export const addNewLine = new ValidatedMethod({
+    name: 'measurements.addNewLine',
+    validate: addNewLineSchema.validator({ clean: true }),
+    run({ measurementName, line }) {
+        const user = Meteor.user();
+        if (user) {
+            return Measurements.update({_id: measurementName }, {$push: {lines: line}});
         }
 
         throw new Meteor.Error(
