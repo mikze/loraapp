@@ -56,11 +56,11 @@ export default class Measurement extends React.Component {
            {this.state.closeCharts ? <Card><CardHeader
             title="List of measurements"
             />
-            <ListOfCharts id={this.props.match.params.id} data={this.state.data}/></Card> : null}
+            <ListOfCharts lines={this.props.measurements.lines} id={this.props.match.params.id} data={this.state.data}/></Card> : null}
             {this.state.closeLines ? <Card><CardHeader
             title="List of data lines"
             />
-            <ListOfLines data={this.state.data} lines={this.state.lines}/></Card> : null}
+            <ListOfLines name={this.props.measurements._id} data={this.state.data} lines={this.state.lines}/></Card> : null}
            </div>)
     }
 }

@@ -31,7 +31,7 @@ export const addNewLine = new SimpleSchema({
     measurementName: {
         type: String
     },
-    lines:{
+    line:{
         type: String
     },
 });

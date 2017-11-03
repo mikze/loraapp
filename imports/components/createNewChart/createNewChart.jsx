@@ -60,15 +60,11 @@ export default class CreateNewChart extends React.Component {
         const styles = {
             chip: {
               margin: 4,
-            },
-            wrapper: {
-              display: 'flex',
-              flexWrap: 'wrap',
-            },
+            }
           };
 
         return (<div>
-            Captured variables: {Object.keys(this.props.data).map(x=>x !== 'name' ? 
+            Captured variables: {this.props.data.map(x=>x !== 'name' ? 
             <Chip style={styles.chip} onClick={()=>this.addTolines(x)}>
             {x}
             </Chip>

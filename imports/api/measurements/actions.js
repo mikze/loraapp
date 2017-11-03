@@ -38,7 +38,8 @@ new Promise((resolve, reject) => {
 
 const actions = {
     addNewChart,
-    addNewMeasurement
+    addNewMeasurement,
+    addNewLine
 };
 
 export { actions };

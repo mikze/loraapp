@@ -81,7 +81,7 @@ render()
         open={this.state.create}
         onRequestClose={this.handleCreateClose}
       >
-      <CreateNewChart data={this.state.data[0]} measurementName={this.props.id}/>
+      <CreateNewChart data={this.props.lines} measurementName={this.props.id}/>
       </Dialog>
 
     <Dialog
