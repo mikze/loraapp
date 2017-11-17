@@ -29,7 +29,6 @@ export default class Chart extends React.Component {
         <Legend />
         {this.props.lines.map(x =>  <Line type="monotone" dataKey={x} stroke="#8884d8" activeDot={{r: 8}}/>)}
         </LineChart>
-        {this.state.params}
         </div>)}
 
 }

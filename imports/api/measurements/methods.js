@@ -15,8 +15,8 @@ export const addNewChart = new ValidatedMethod({
         }
 
         throw new Meteor.Error(
-            'no-permissions-to-set-admin',
-            'You do not have permission to set admin',
+            'Could not make new chart',
+            'Could not make new chart',
         );
     },
 });
@@ -27,12 +27,12 @@ export const addNewMeasurement = new ValidatedMethod({
     run({ id,text,description }) {
         const user = Meteor.user();
         if (user) {
-            return Measurements.insert({_id:id, ownerId:Meteor.userId(),data:[],text:text,description:description});
+            return Measurements.insert({_id:id, ownerId:Meteor.userId(),data:[],text:text,description:description,charts:[],lines:[]});
         }
 
         throw new Meteor.Error(
-            'no-permissions-to-set-admin',
-            'You do not have permission to set admin',
+            'Could not make new measurement',
+            'Could not make new measurement',
         );
     },
 });
@@ -47,8 +47,8 @@ export const addNewLine = new ValidatedMethod({
         }
 
         throw new Meteor.Error(
-            'no-permissions-to-set-admin',
-            'You do not have permission to set admin',
+            'Could not make new Line',
+            'Could not make new Line',
         );
     },
 });

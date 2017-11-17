@@ -70,13 +70,13 @@ export default class CreateNewChart extends React.Component {
             </Chip>
             : null)}
             {this.state.lines.map(this.renderChip, this)}
-            <TextField
+            Chart's name:<TextField
             onChange={e=>this.handleChange(e,'ChartName')}
             />
-            <TextField
+            <br/>Chart's description:<TextField
             onChange={e=>this.handleChange(e,'Description')}
            />
-            <FlatButton
+            <br/><FlatButton
             label="Create new CHART!"
             primary={true}
             onClick={this.createChart}

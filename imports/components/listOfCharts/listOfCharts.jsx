@@ -17,7 +17,8 @@ export default class ListOfCharts extends React.Component{
             create:false,
             params: ['xD'],
             lines: [],
-            description: 'description'
+            description: 'description',
+            name: 'Chart name'
           };
     
                 this.handleOpen = this.handleOpen.bind(this);
@@ -30,10 +31,11 @@ export default class ListOfCharts extends React.Component{
         this.setState({data:nextProps.data});
       }
 
-handleOpen = (lines, description) => {
+handleOpen = (lines, description,name) => {
     this.setState({lines},
         this.setState({description},
-           this.setState({open: true})));
+          this.setState({name},
+           this.setState({open: true}))));
   };
 
   handleClose = () => {
@@ -72,7 +74,7 @@ render()
         onClick={(this.handleCreate)}
         />
         
-        {this.props.measurements.map(x => <List><ListItem primaryText={x.name} onClick={() => this.handleOpen(x.lines, x.description)}/></List>)} 
+        {this.props.measurements.map(x => <List><ListItem primaryText={x.name} onClick={() => this.handleOpen(x.lines, x.description, x.name)}/></List>)} 
         
         <Dialog
         title="Dialog With Actions"
@@ -85,7 +87,7 @@ render()
       </Dialog>
 
     <Dialog
-    title="Dialog With Actions"
+    title={this.state.name}
     actions={actions[0]}
     modal={false}
     open={this.state.open}
