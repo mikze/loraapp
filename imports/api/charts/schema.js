@@ -9,8 +9,8 @@ export const addNewChart = new SimpleSchema({
     },
     description: String,
 
-    data:{
+    lines:{
         type: Array
     },
-    'data.$': Object
+    'lines.$': Object
 });

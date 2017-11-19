@@ -1,4 +1,4 @@
-import ListOfCharts from './listOfCharts.jsx'
+import ChartView from './chartView.jsx';
 import { composeWithTracker } from 'react-komposer';
 import { Measurements } from '../../api/measurements'
 import { Meteor } from 'meteor/meteor';
@@ -6,18 +6,18 @@ import { Meteor } from 'meteor/meteor';
 const composer = ( props, onData ) => {
     
     const subscription = Meteor.subscribe( 'measurements' );
-    const matchingMeasurements = props.match.params.id;
-    const matchingKind = props.match.params.kind;
+    const matchingMeasurements = props.params.id;
+    const matchingKind = props.params.kind;
   
     if ( subscription.ready() ) {
       let data = [];
-      let charts= [];
+      let lines= [];
       const measurement = Measurements.findOne({_id: matchingMeasurements});
       const datas = measurement.datas;
-      datas.map( x => x.dataName === matchingKind ? data = x.data : null)
-      datas.map( x => x.dataName === matchingKind ? charts = x.charts : null)
-      onData( null, {charts,data} );
+      datas.map( x => x.dataName === matchingKind ? data = x : null)
+      lines = measurement.lines;
+      onData( null, {lines,data} );
     }
   };
 
-export default composeWithTracker( composer )( ListOfCharts );
+export default composeWithTracker( composer )( ChartView );

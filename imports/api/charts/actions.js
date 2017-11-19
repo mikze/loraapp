@@ -1,8 +1,8 @@
 import {addNewChart as addNewChartMethod} from './methods.js';
 
-const addNewChart = (chartName, description, data) =>
+const addNewChart = (chartName, description, lines) =>
 new Promise((resolve, reject) => {
-    addNewChartMethod.call({chartName, description, data }, (err, res) => {
+    addNewChartMethod.call({chartName, description, lines }, (err, res) => {
         if (err) {
             const error = new Error(err);
             reject(error);

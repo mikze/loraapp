@@ -1,17 +1,18 @@
 import { Meteor } from 'meteor/meteor';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
-import {addNewChart as addNewChartSchema,
+import {addNewVar as addNewVarSchema,
         addNewMeasurement as addNewMeasurementSchema,
         addNewLine as addNewLineSchema} from './schema.js';
 import {Measurements} from './measurements.js'
 
-export const addNewChart = new ValidatedMethod({
-    name: 'measurements.addNewChart',
-    validate: addNewChartSchema.validator({ clean: true }),
-    run({ measurementName, chartName, description, lines }) {
+export const addNewVar = new ValidatedMethod({
+    name: 'measurements.addNewVar',
+    validate: addNewVarSchema.validator({ clean: true }),
+    run({ measurementName, dataName, xname, xunit, yname, yunit }) {
         const user = Meteor.user();
         if (user) {
-            return Measurements.update({_id: measurementName }, {$push: {charts: {name: chartName ,description: description, lines: lines}}});
+            console.log('addin ',measurementName)
+            return Measurements.update({_id: measurementName }, {$push: {datas: {dataName:dataName,xname:xname,xunit:xunit,yname:yname,yunit:yunit,data: []}}});
         }
 
         throw new Meteor.Error(
@@ -27,7 +28,7 @@ export const addNewMeasurement = new ValidatedMethod({
     run({ id,text,description }) {
         const user = Meteor.user();
         if (user) {
-            return Measurements.insert({_id:id, ownerId:Meteor.userId(),data:[],text:text,description:description,charts:[],lines:[]});
+            return Measurements.insert({_id:id, ownerId:Meteor.userId(),text:text,description:description,lines:[],datas:[]});
         }
 
         throw new Meteor.Error(
@@ -42,8 +43,17 @@ export const addNewLine = new ValidatedMethod({
     validate: addNewLineSchema.validator({ clean: true }),
     run({ measurementName, line }) {
         const user = Meteor.user();
+        const whatToDo = () =>
+        {
+            console.log('addin ', line);
+            Measurements.update({_id: measurementName }, {$push: {lines: line}});
+            const datas = Measurements.findOne({_id: measurementName }).datas;
+           
+            datas.map(x => x.data.push({[line]:[]}));
+            Measurements.update({_id: measurementName }, {$set: {datas:datas}});
+        }
         if (user) {
-            return Measurements.update({_id: measurementName }, {$push: {lines: line}});
+            return whatToDo();
         }
 
         throw new Meteor.Error(

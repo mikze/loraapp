@@ -5,12 +5,12 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import Chart from '../chart'
-import CreateNewChart from '../createNewChart'
 
 export default class ListOfCharts extends React.Component{
 
     constructor(props) {
         super(props);
+        console.log(props)
         this.state = {
             data: props.data,
             open: false,
@@ -74,7 +74,7 @@ render()
         onClick={(this.handleCreate)}
         />
         
-        {this.props.measurements.map(x => <List><ListItem primaryText={x.name} onClick={() => this.handleOpen(x.lines, x.description, x.name)}/></List>)} 
+        {this.props.charts.map(x => <List><ListItem primaryText={x.name} onClick={() => this.handleOpen(x.lines, x.description, x.name)}/></List>)} 
         
         <Dialog
         title="Dialog With Actions"
@@ -83,7 +83,6 @@ render()
         open={this.state.create}
         onRequestClose={this.handleCreateClose}
       >
-      <CreateNewChart data={this.props.lines} measurementName={this.props.id}/>
       </Dialog>
 
     <Dialog

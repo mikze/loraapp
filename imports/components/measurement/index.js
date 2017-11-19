@@ -10,7 +10,7 @@ const composer = ( props, onData ) => {
 
   if ( subscription.ready() ) {
     const measurements = Measurements.findOne({_id: matchingMeasurements});
-    onData( null, {measurements} );
+    onData( null, {measurements, matchingMeasurements} );
   }
 };
 

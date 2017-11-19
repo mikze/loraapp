@@ -7,10 +7,10 @@ import {Charts} from './charts.js'
 export const addNewChart = new ValidatedMethod({
     name: 'charts.addNewChart',
     validate: addNewChartSchema.validator({ clean: true }),
-    run({ name,description,data }) {
+    run({ name,description,lines }) {
         const user = Meteor.user();
         if (user) {
-            return Charts.insert({_id:id, ownerId:Meteor.userId(),data:data,description:description});
+            return Charts.insert({_id:id, ownerId:Meteor.userId(),lines:lines,description:description});
         }
 
         throw new Meteor.Error(

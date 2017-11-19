@@ -1,4 +1,4 @@
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis,ZAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import React from 'react';
 
 
@@ -8,27 +8,42 @@ export default class Chart extends React.Component {
 
     constructor(props) {
     super(props);
-    this.state = {data: props.data,
-                  params: props.params};
+    this.state = {allData: props.data,
+                  lines: props.lines,
+                  params: props.params
+                };
+
+                this.findIndexOfData = this.findIndexOfData.bind(this);
   }
 
   componentWillReceiveProps(nextProps, nextState) {
-    this.setState({data:nextProps.data});
+    this.setState({allData:nextProps.data});
+    this.setState({lines:nextProps.lines});
     this.setState({params:nextProps.params});
   }
-
+  
+  findIndexOfData(name)
+  {
+    const data = this.state.allData.data;
+    let index = 0;
+    data.map( (x,i) => eval('x.'+name) ? index = i : null);
+    console.log('index= ', data[index]);
+    return eval('data[index].' + name);
+  }
   render()
     {
+      const data = this.state.allData;
+      console.log(data);
     return(<div>
-        <LineChart width={600} height={300} data={this.state.data}
-        margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-        <XAxis dataKey="name"/>
-        <YAxis/>
-        <CartesianGrid strokeDasharray="3 3"/>
-        <Tooltip/>
-        <Legend />
-        {this.props.lines.map(x =>  <Line type="monotone" dataKey={x} stroke="#8884d8" activeDot={{r: 8}}/>)}
-        </LineChart>
+        <ScatterChart width={600} height={400} margin={{top: 20, right: 20, bottom: 20, left: 20}}>
+      	<XAxis type="number" dataKey={'x'} name={data.xname} unit={data.xunit}/>
+      	<YAxis type="number" dataKey={'y'} name={data.yname} unit={data.yunit}/>
+        <ZAxis range={[100]}/>
+        <CartesianGrid />
+      	<Tooltip cursor={{strokeDasharray: '3 3'}}/>
+        <Legend/>
+        {this.state.lines.map((x,i) => <Scatter name={x} data={this.findIndexOfData(x)} fill='#8884d8' line />)}
+      </ScatterChart>
         </div>)}
 
 }

@@ -6,15 +6,26 @@
     margin-top: -50px;
     margin-left: -50px;
     height: 100px;
+    width: 50%;
 }
+
 
 #chart {
     position: absolute;
-    top: 25%;
-    left: 25%;
+    top: 35%;
+    left: 35%;
     margin-top: -50px;
     margin-left: -50px;
     height: 100px;
+    width: 50%;
+}
+
+#title {
+    margin: auto;
+    width: 50%;
+    border: 3px solid rgba(173, 215, 255, 0.596);
+    padding: 10px;
+    text-align: center;
 }
 
 body{

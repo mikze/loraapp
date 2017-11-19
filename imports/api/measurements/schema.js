@@ -1,18 +1,17 @@
 import SimpleSchema from 'simpl-schema';
 
-export const addNewChart = new SimpleSchema({
-    chartName: { 
-        type: String
-    },
-    measurementName: {
-        type: String,
-    },
-    description: String,
+export const addNewVar = new SimpleSchema({
+    measurementName:String,
+    dataName:String,
+    xname: String,
+    xunit: String,
+    yname: String,
+    yunit: String,
 
-    lines:{
-        type: Array
-    },
-    'lines.$': String
+    // lines:{
+    //     type: Array
+    // },
+    // 'lines.$': String
 });
 
 export const addNewMeasurement = new SimpleSchema({
