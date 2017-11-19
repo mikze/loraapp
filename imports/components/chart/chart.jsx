@@ -27,7 +27,6 @@ export default class Chart extends React.Component {
     const data = this.state.allData.data;
     let index = 0;
     data.map( (x,i) => eval('x.'+name) ? index = i : null);
-    console.log('index= ', data[index]);
     return eval('data[index].' + name);
   }
   render()
@@ -42,7 +41,7 @@ export default class Chart extends React.Component {
         <CartesianGrid />
       	<Tooltip cursor={{strokeDasharray: '3 3'}}/>
         <Legend/>
-        {this.state.lines.map((x,i) => <Scatter name={x} data={this.findIndexOfData(x)} fill='#8884d8' line />)}
+        {this.state.lines.map((x,i) => <Scatter name={x} data={eval('data.data.'+ x)} fill='#8884d8' line />)}
       </ScatterChart>
         </div>)}
 
