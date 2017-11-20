@@ -9,10 +9,13 @@ export const addNewVar = new ValidatedMethod({
     name: 'measurements.addNewVar',
     validate: addNewVarSchema.validator({ clean: true }),
     run({ measurementName, dataName, xname, xunit, yname, yunit }) {
+
         const user = Meteor.user();
         const lines = Measurements.findOne({_id: measurementName }).lines;
-        const data = [];
-        lines.map(x => data.push({[x]:[]}))
+        const data = {};
+
+        lines.map(x => data[x] = [])
+        
         if (user) {
             console.log('addin ',measurementName)
             return Measurements.update({_id: measurementName }, {$push: {datas: {dataName:dataName,xname:xname,xunit:xunit,yname:yname,yunit:yunit,data:data}}});
