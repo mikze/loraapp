@@ -3,7 +3,7 @@ import FlatButton from 'material-ui/FlatButton';
 import randtoken from 'rand-token';
 import TextField from 'material-ui/TextField';
 import Chip from 'material-ui/Chip';
-import Chart from '../chart';
+import Chart from './chart.jsx';
 import {blue300} from 'material-ui/styles/colors';
 
 export default class ChartView extends React.Component {

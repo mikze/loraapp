@@ -4,7 +4,6 @@ import {List, ListItem} from 'material-ui/List';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import ListOfCharts from '../listOfCharts'
 
 export default class ListOfKind extends React.Component{
 

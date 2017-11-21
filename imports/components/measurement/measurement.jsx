@@ -1,6 +1,5 @@
 import React from 'react'
 import FlatButton from 'material-ui/FlatButton';
-import ShowData from '../showData'
 import ListOfKind from '../listOfKind'
 import ListOfLines from '../listOfLines'
 import Dialog from 'material-ui/Dialog';

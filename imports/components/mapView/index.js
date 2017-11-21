@@ -1,4 +1,4 @@
-import GoogleApiWrapper from './mapView.jsx';
+import MapView from './mapView.jsx';
 import { composeWithTracker } from 'react-komposer';
 import { Measurements } from '../../api/measurements'
 import { Meteor } from 'meteor/meteor';
@@ -20,4 +20,4 @@ const composer = ( props, onData ) => {
     }
   };
 
-export default composeWithTracker( composer )( GoogleApiWrapper );
+export default composeWithTracker( composer )( MapView );

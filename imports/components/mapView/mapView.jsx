@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import Chip from 'material-ui/Chip';
 import {blue300} from 'material-ui/styles/colors';
+import GoogleApiWrapper from './map.jsx';
 
-export class MapView extends Component {
+export default class MapView extends Component {
 
     constructor(props) {
         super(props);
@@ -26,7 +26,6 @@ export class MapView extends Component {
            lines.splice(index, 1);
            addedLines.push(x);
            this.setState({addedLines},this.setState({lines}));
-        //   actions.addNewLine(this.props.name,this.state.newLine);
       }
 
       removeLines(x)
@@ -38,7 +37,6 @@ export class MapView extends Component {
            addedLines.splice(index, 1);
            lines.push(x);
            this.setState({addedLines},this.setState({lines}));
-        //   actions.addNewLine(this.props.name,this.state.newLine);
       }
 
 render() {
@@ -52,19 +50,8 @@ render() {
     const data = this.state.allData;
 
     return (
-        <div>
-    <div id="map">
-      <Map google={this.props.google} zoom={this.props.aaa}>
-
-{this.state.addedLines.map((x,i) => <Marker name={x} position={{lat: 37.759703, lng: -122.428093}}/>)}
-
-        <InfoWindow onClose={this.onInfoWindowClose}>
-   
-        </InfoWindow>
-        
-      </Map>
-      
-      </div>
+      <div>
+        <GoogleApiWrapper lines={this.state.addedLines} data={data}/>
       { this.state.lines.map((x,i)=>(<div>{<Chip style={styles.chip} onClick={()=>this.addLines(x)}>
         {x}
         </Chip>}
@@ -78,7 +65,3 @@ render() {
     );
   }
 }
-
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyAdwMVrZ0IObL2EYODKla-lmluaYViW3KQ'
-})(MapView)
