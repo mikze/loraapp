@@ -1,2 +1,2 @@
-import CreateNewVar  from './createNewVar.jsx'
+import CreateNewVar from "./createNewVar.jsx";
 export default CreateNewVar;

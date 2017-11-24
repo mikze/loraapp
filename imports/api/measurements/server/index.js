@@ -1,2 +1,2 @@
-import './publications.js';
-import './restapi.js';
+import "./publications.js";
+import "./restapi.js";

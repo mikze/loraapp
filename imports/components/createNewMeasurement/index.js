@@ -1,2 +1,2 @@
-import CreateNewMeasurement  from './createNewMeasurement.jsx'
+import CreateNewMeasurement from "./createNewMeasurement.jsx";
 export default CreateNewMeasurement;

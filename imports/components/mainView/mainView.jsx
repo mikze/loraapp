@@ -17,24 +17,24 @@ export default class MainView extends React.Component {
     this.onToggle = this.onToggle.bind(this);
   }
 
-  onToggle = () =>{
-      const swap = !this.state.swap;
-      this.setState({swap});
-  }
+  onToggle = () => {
+    const swap = !this.state.swap;
+    this.setState({ swap });
+  };
   render() {
     const styles = {
-        block: {
-          maxWidth: 250,
-        },
-        toggle: {
-          marginBottom: 16,
-        }
-    }
+      block: {
+        maxWidth: 250
+      },
+      toggle: {
+        marginBottom: 16
+      }
+    };
     const title =
       this.props.match.params.id + " " + this.props.match.params.kind;
     return (
       <div>
-        <Toggle label="Simple" style={styles.toggle} onToggle={this.onToggle}/>
+        <Toggle label="Simple" style={styles.toggle} onToggle={this.onToggle} />
 
         <div div id="title">
           {title}

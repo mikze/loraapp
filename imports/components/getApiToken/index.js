@@ -1,2 +1,2 @@
-import GetAPiToken from './getApiToken.jsx'
+import GetAPiToken from "./getApiToken.jsx";
 export default GetAPiToken;

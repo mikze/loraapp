@@ -19,8 +19,10 @@ export class MyMap extends Component {
   }
 
   componentWillReceiveProps(nextProps, nextState) {
-    this.setState({allData:nextProps.data},
-    this.setState({lines:nextProps.lines}));
+    this.setState(
+      { allData: nextProps.data },
+      this.setState({ lines: nextProps.lines })
+    );
   }
 
   onMarkerClick = (props, marker, e) => {
@@ -29,7 +31,6 @@ export class MyMap extends Component {
       activeMarker: marker,
       showingInfoWindow: true
     });
-    console.log(this.state.data);
   };
 
   onMapClicked = props => {
@@ -42,6 +43,7 @@ export class MyMap extends Component {
   };
 
   render() {
+    console.log("chuj ", this.state.data.data.Ard2);
     const styles = {
       chip: {
         margin: 4
@@ -53,14 +55,27 @@ export class MyMap extends Component {
     return (
       <div>
         <div id="map">
-          <Map google={this.props.google} zoom={this.props.aaa} onClick={this.onMapClicked}>
-            {this.state.lines.map((x, i) => (
-              <Marker
-                name={x}
-                position={{ lat: 37.759703, lng: -122.428093 }}
-                onClick={this.onMarkerClick}
-              />
-            ))}
+          <Map
+            google={this.props.google}
+            zoom={this.props.aaa}
+            onClick={this.onMapClicked}
+          >
+            {this.state.lines.map((x, i) =>
+              this.state.data.data[x].map(y => (
+                <Marker
+                  name={x}
+                  yvalue={y.y}
+                  xvalue={y.x}
+                  date={y.date}
+                  yname={y.yname}
+                  xname={y.xname}
+                  position={{ lat: y.l, lng: y.a }}
+                  onClick={this.onMarkerClick}
+                >
+                  No elo
+                </Marker>
+              ))
+            )}
 
             <InfoWindow
               marker={this.state.activeMarker}
@@ -68,6 +83,13 @@ export class MyMap extends Component {
             >
               <div>
                 <h1>{this.state.selectedPlace.name}</h1>
+                {this.state.data.yname} {this.state.selectedPlace.yvalue}{" "}
+                {this.state.data.yunit}
+                <br />
+                {this.state.data.xname} {this.state.selectedPlace.xvalue}{" "}
+                {this.state.data.xunit}
+                <br />
+                Date: {this.state.selectedPlace.date}
               </div>
             </InfoWindow>
           </Map>

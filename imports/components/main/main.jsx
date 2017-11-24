@@ -1,4 +1,3 @@
-import React from 'react'
+import React from "react";
 
-
-export default Main = props => <div>Main</div>
+export default (Main = props => <div>Main</div>);

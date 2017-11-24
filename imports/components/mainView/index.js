@@ -1,2 +1,2 @@
-import MainView from './mainView.jsx';
+import MainView from "./mainView.jsx";
 export default MainView;

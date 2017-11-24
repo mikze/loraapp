@@ -1,18 +1,18 @@
-import { Meteor } from 'meteor/meteor';
-import '/imports/api/measurements/server';
+import { Meteor } from "meteor/meteor";
+import "/imports/api/measurements/server";
 
-import '/imports/api/measurements';
-import '/imports/api/charts';
+import "/imports/api/measurements";
+import "/imports/api/charts";
 
 const settings = Meteor.settings.google;
 
-if (settings) {  
+if (settings) {
   ServiceConfiguration.configurations.remove({
-    service: 'google'
+    service: "google"
   });
 
   ServiceConfiguration.configurations.insert({
-    service: 'google',
+    service: "google",
     clientId: settings.clientId,
     secret: settings.secret
   });

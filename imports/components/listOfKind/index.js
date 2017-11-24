@@ -1,2 +1,2 @@
-import ListOfKind from './listOfKind.jsx';
+import ListOfKind from "./listOfKind.jsx";
 export default ListOfKind;
