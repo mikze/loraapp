@@ -24,9 +24,6 @@ export default class CreateNewMeasurement extends React.Component {
         : this.setState({ Description: e.target.value });
   };
   createMeasurement() {
-    console.log(
-      this.state.Id + " " + this.state.Text + " " + this.state.Description
-    );
     actions.addNewMeasurement(
       this.state.Id,
       this.state.Text,

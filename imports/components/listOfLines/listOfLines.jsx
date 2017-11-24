@@ -17,7 +17,6 @@ export default class ListOfLines extends React.Component {
   }
 
   addLines() {
-    console.log(this.state.lines);
     const lines = this.state.lines;
     lines.push(this.state.newLine);
     this.setState({ lines });
@@ -25,7 +24,6 @@ export default class ListOfLines extends React.Component {
   }
 
   handleChange(e) {
-    console.log(e.target.value);
     const newLine = e.target.value;
     this.setState({ newLine });
   }

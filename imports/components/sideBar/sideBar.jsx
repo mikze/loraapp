@@ -26,7 +26,6 @@ export default class SideBar extends React.Component {
         >
           <MenuItem href={"/gettoken"}>Get Token</MenuItem>
           <MenuItem href={"/listofmeasurements"}>List of measurements</MenuItem>
-          <MenuItem href={"/recived/1"}>recived</MenuItem>
           <MenuItem href={"/logout"}>Logout</MenuItem>
         </Drawer>
       </div>

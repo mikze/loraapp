@@ -18,7 +18,6 @@ export default class MapView extends Component {
   }
 
   addLines(x) {
-    console.log(x);
     const addedLines = this.state.addedLines;
     const lines = this.state.lines;
     const index = lines.indexOf(x);
@@ -28,13 +27,19 @@ export default class MapView extends Component {
   }
 
   removeLines(x) {
-    console.log(x);
     const addedLines = this.state.addedLines;
     const lines = this.state.lines;
     const index = addedLines.indexOf(x);
     addedLines.splice(index, 1);
     lines.push(x);
     this.setState({ addedLines }, this.setState({ lines }));
+  }
+
+  componentWillReceiveProps(nextProps, nextState) {
+    this.setState(
+      { allData: nextProps.data },
+      this.setState({ lines: nextProps.lines })
+    );
   }
 
   render() {
@@ -48,7 +53,7 @@ export default class MapView extends Component {
 
     return (
       <div>
-        <GoogleApiWrapper lines={this.state.addedLines} data={data} />
+        <GoogleApiWrapper lines={this.state.addedLines} data={this.state.allData} />
         {this.state.lines.map((x, i) => (
           <div>
             {

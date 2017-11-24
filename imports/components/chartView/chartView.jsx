@@ -29,7 +29,6 @@ export default class ChartView extends React.Component {
   }
 
   addLines(x) {
-    console.log(x);
     const addedLines = this.state.addedLines;
     const lines = this.state.lines;
     const index = lines.indexOf(x);
@@ -40,7 +39,6 @@ export default class ChartView extends React.Component {
   }
 
   removeLines(x) {
-    console.log(x);
     const addedLines = this.state.addedLines;
     const lines = this.state.lines;
     const index = addedLines.indexOf(x);

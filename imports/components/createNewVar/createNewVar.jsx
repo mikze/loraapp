@@ -22,7 +22,6 @@ export default class CreateNewVar extends React.Component {
   }
 
   createVar() {
-    console.log(this.props.measurementName);
     actions.addNewVar(
       this.props.measurementName,
       this.state.dataName,

@@ -5,7 +5,6 @@ import {
   browserHistory
 } from "react-router-dom";
 import { Switch } from "react-router";
-import LiveRecivedData from "../../components/liveRecivedData";
 import ListOfMeasurements from "../../components/listOfMeasurements";
 import MainView from "../../components/mainView";
 import Measurement from "../../components/measurement";
@@ -27,7 +26,6 @@ export const Routes = props => {
           <Layout exact path="/" component={Main} />
           <Layout path="/listOfMeasurements" component={ListOfMeasurements} />
           <Layout path="/measurement/:id/:kind/MainView" component={MainView} />
-          <Layout path="/recived/:id" component={LiveRecivedData} />
           <Layout path="/measurement/:id" component={Measurement} />
           <Layout path="/gettoken" component={GetApiToken} />
 

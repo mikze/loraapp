@@ -18,7 +18,6 @@ export const addNewVar = new ValidatedMethod({
     lines.map(x => (data[x] = []));
 
     if (user) {
-      console.log("addin ", measurementName);
       return Measurements.update(
         { _id: measurementName },
         {
@@ -72,7 +71,6 @@ export const addNewLine = new ValidatedMethod({
   run({ measurementName, line }) {
     const user = Meteor.user();
     const whatToDo = () => {
-      console.log("addin ", line);
       Measurements.update({ _id: measurementName }, { $push: { lines: line } });
       const datas = Measurements.findOne({ _id: measurementName }).datas;
 

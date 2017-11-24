@@ -24,7 +24,6 @@ export default class ListOfKind extends React.Component {
           <FlatButton
             label={x.dataName}
             primary={true}
-            onClick={() => console.log("xD")}
             href={
               "/measurement/" + this.props.id + "/" + x.dataName + "/MainView"
             }

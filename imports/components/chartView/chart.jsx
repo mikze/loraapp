@@ -36,7 +36,6 @@ export default class Chart extends React.Component {
   }
   render() {
     const data = this.state.allData;
-    console.log(data);
     return (
       <div>
         <ScatterChart

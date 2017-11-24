@@ -8,7 +8,6 @@ export class MyMap extends Component {
     super(props);
     this.state = {
       data: props.data,
-      lines: props.lines,
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {}
@@ -19,10 +18,7 @@ export class MyMap extends Component {
   }
 
   componentWillReceiveProps(nextProps, nextState) {
-    this.setState(
-      { allData: nextProps.data },
-      this.setState({ lines: nextProps.lines })
-    );
+    this.setState({ data: nextProps.data });
   }
 
   onMarkerClick = (props, marker, e) => {
@@ -43,7 +39,6 @@ export class MyMap extends Component {
   };
 
   render() {
-    console.log("chuj ", this.state.data.data.Ard2);
     const styles = {
       chip: {
         margin: 4
@@ -60,20 +55,21 @@ export class MyMap extends Component {
             zoom={this.props.aaa}
             onClick={this.onMapClicked}
           >
-            {this.state.lines.map((x, i) =>
-              this.state.data.data[x].map(y => (
+            {this.props.lines.map(line =>
+              this.state.data.data[line].map(singleMeasurement => (
                 <Marker
-                  name={x}
-                  yvalue={y.y}
-                  xvalue={y.x}
-                  date={y.date}
-                  yname={y.yname}
-                  xname={y.xname}
-                  position={{ lat: y.l, lng: y.a }}
+                  name={line}
+                  yvalue={singleMeasurement.y}
+                  xvalue={singleMeasurement.x}
+                  date={singleMeasurement.date}
+                  yname={singleMeasurement.yname}
+                  xname={singleMeasurement.xname}
+                  position={{
+                    lat: singleMeasurement.l,
+                    lng: singleMeasurement.a
+                  }}
                   onClick={this.onMarkerClick}
-                >
-                  No elo
-                </Marker>
+                />
               ))
             )}
 
