@@ -4,6 +4,8 @@ import { List, ListItem } from "material-ui/List";
 import FlatButton from "material-ui/FlatButton";
 import Dialog from "material-ui/Dialog";
 import CreateNewMeasurement from "../createNewMeasurement";
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 export default class ListOfMeasurements extends React.Component {
   constructor(props) {
@@ -24,17 +26,21 @@ export default class ListOfMeasurements extends React.Component {
   };
 
   render() {
+
+    const style = {
+      marginRight: 20,
+    };
+
     const actions = (
       <FlatButton label="Cancel" primary={true} onClick={this.handleClose} />
     );
 
     return (
       <div>
-        <FlatButton
-          label="Create New Measurement"
-          primary={true}
-          onClick={this.handleOpen}
-        />
+
+<FloatingActionButton mini={true} style={style} onClick={this.handleOpen}>
+      <ContentAdd />
+    </FloatingActionButton>
 
         <Dialog
           title="Dialog With Actions"

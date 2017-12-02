@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import Drawer from "material-ui/Drawer";
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import MenuItem from "material-ui/MenuItem";
 import RaisedButton from "material-ui/RaisedButton";
 
@@ -15,19 +15,18 @@ export default class SideBar extends React.Component {
   handleClose = () => this.setState({ open: false });
 
   render() {
+
+    const style = {
+      margin: 12,
+    };
+    
     return (
       <div>
-        <RaisedButton label="|||" onClick={this.handleToggle} />
-        <Drawer
-          docked={false}
-          width={200}
-          open={this.state.open}
-          onRequestChange={open => this.setState({ open })}
-        >
+        <Toolbar>
           <MenuItem href={"/gettoken"}>Get Token</MenuItem>
           <MenuItem href={"/listofmeasurements"}>List of measurements</MenuItem>
-          <MenuItem href={"/logout"}>Logout</MenuItem>
-        </Drawer>
+          <RaisedButton label="Logout" secondary={true} style={style} href={"/logout"}/>
+        </Toolbar>
       </div>
     );
   }

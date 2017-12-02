@@ -39,8 +39,8 @@ export default class Chart extends React.Component {
     return (
       <div>
         <ScatterChart
-          width={600}
-          height={400}
+          width={1000}
+          height={500}
           margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
         >
           <XAxis

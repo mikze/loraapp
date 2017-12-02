@@ -37,9 +37,7 @@ export default class MapView extends Component {
 
   componentWillReceiveProps(nextProps, nextState) {
     this.setState(
-      { allData: nextProps.data },
-      this.setState({ lines: nextProps.lines })
-    );
+      { allData: nextProps.data });
   }
 
   render() {
