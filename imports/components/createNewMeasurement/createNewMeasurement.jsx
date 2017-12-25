@@ -9,7 +9,6 @@ export default class CreateNewMeasurement extends React.Component {
     super(props);
     this.state = {
       Id: "Id",
-      Text: "Text",
       Description: "Description"
     };
     this.handleChange = this.handleChange.bind(this);
@@ -19,14 +18,11 @@ export default class CreateNewMeasurement extends React.Component {
   handleChange = (e, option) => {
     option === "Id"
       ? this.setState({ Id: e.target.value })
-      : option === "Text"
-        ? this.setState({ Text: e.target.value })
-        : this.setState({ Description: e.target.value });
+      : this.setState({ Description: e.target.value });
   };
   createMeasurement() {
     actions.addNewMeasurement(
       this.state.Id,
-      this.state.Text,
       this.state.Description
     );
   }
@@ -36,9 +32,6 @@ export default class CreateNewMeasurement extends React.Component {
       <div>
         CreateNewMeasurement<br />
         Measurement Id: <TextField onChange={e => this.handleChange(e, "Id")} />
-        <br />
-        Measurement Text:{" "}
-        <TextField onChange={e => this.handleChange(e, "Text")} />
         <br />
         Measurement Description:{" "}
         <TextField onChange={e => this.handleChange(e, "Desc")} />

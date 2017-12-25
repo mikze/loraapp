@@ -4,6 +4,7 @@ import randtoken from "rand-token";
 import TextField from "material-ui/TextField";
 import Chip from "material-ui/Chip";
 import Chart from "./chart.jsx";
+import XlsGenerator from '../xlsGenerator';
 import { blue300 } from "material-ui/styles/colors";
 
 export default class ChartView extends React.Component {
@@ -16,9 +17,7 @@ export default class ChartView extends React.Component {
       create: false,
       params: ["xD"],
       addedLines: [],
-      lines: props.lines,
-      description: "description",
-      name: "Chart name"
+      lines: props.lines
     };
 
     this.addLines = this.addLines.bind(this);
@@ -35,7 +34,6 @@ export default class ChartView extends React.Component {
     lines.splice(index, 1);
     addedLines.push(x);
     this.setState({ addedLines }, this.setState({ lines }));
-    //   actions.addNewLine(this.props.name,this.state.newLine);
   }
 
   removeLines(x) {
@@ -45,7 +43,6 @@ export default class ChartView extends React.Component {
     addedLines.splice(index, 1);
     lines.push(x);
     this.setState({ addedLines }, this.setState({ lines }));
-    //   actions.addNewLine(this.props.name,this.state.newLine);
   }
 
   render() {
@@ -59,7 +56,6 @@ export default class ChartView extends React.Component {
       <div>
         <Chart
           data={this.state.data}
-          params={this.state.params}
           lines={this.state.addedLines}
         />
 
@@ -84,8 +80,10 @@ export default class ChartView extends React.Component {
                 {x}
               </Chip>
             }
+            
           </div>
         ))}
+        <XlsGenerator data={this.state.data} lines={this.state.addedLines} />
       </div>
     );
   }

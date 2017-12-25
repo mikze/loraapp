@@ -10,13 +10,13 @@ import {
 } from "recharts";
 import React from "react";
 
+
 export default class Chart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       allData: props.data,
       lines: props.lines,
-      params: props.params
     };
 
     this.findIndexOfData = this.findIndexOfData.bind(this);
@@ -25,14 +25,13 @@ export default class Chart extends React.Component {
   componentWillReceiveProps(nextProps, nextState) {
     this.setState({ allData: nextProps.data });
     this.setState({ lines: nextProps.lines });
-    this.setState({ params: nextProps.params });
   }
 
   findIndexOfData(name) {
     const data = this.state.allData.data;
     let index = 0;
-    data.map((x, i) => (eval("x." + name) ? (index = i) : null));
-    return eval("data[index]." + name);
+    data.map((x, i) => (x[name] ? (index = i) : null));
+    return data[index][name];
   }
   render() {
     const data = this.state.allData;
@@ -59,16 +58,22 @@ export default class Chart extends React.Component {
           <CartesianGrid />
           <Tooltip cursor={{ strokeDasharray: "3 3" }} />
           <Legend />
-          {this.state.lines.map((x, i) => (
+          {this.state.lines.map((x, i) => {
+           let rand = Math.floor((Math.random() * 900000) + 100000);
+           let color = "#" + rand;
+            return(
             <Scatter
               name={x}
-              data={eval("data.data." + x)}
-              fill="#8884d8"
+              data={data.data[x]} //tu byl eval
+              fill={color}
               line
             />
-          ))}
+          )}
+          )}
         </ScatterChart>
+        
       </div>
+      
     );
   }
 }

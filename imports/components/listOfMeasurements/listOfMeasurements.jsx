@@ -54,7 +54,7 @@ export default class ListOfMeasurements extends React.Component {
 
         {this.props.measurements.map(x => (
           <List>
-            <ListItem href={"/measurement/" + x._id} primaryText={x.text} />
+            <ListItem href={"/measurement/" + x._id} primaryText={x._id} />
           </List>
         ))}
       </div>

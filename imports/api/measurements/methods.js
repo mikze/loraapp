@@ -45,13 +45,12 @@ export const addNewVar = new ValidatedMethod({
 export const addNewMeasurement = new ValidatedMethod({
   name: "measurements.addNewMeasurement",
   validate: addNewMeasurementSchema.validator({ clean: true }),
-  run({ id, text, description }) {
+  run({ id, description }) {
     const user = Meteor.user();
     if (user) {
       return Measurements.insert({
         _id: id,
         ownerId: Meteor.userId(),
-        text: text,
         description: description,
         lines: [],
         datas: []

@@ -18,9 +18,9 @@ const addNewVar = (measurementName, dataName, xname, xunit, yname, yunit) =>
     );
   });
 
-const addNewMeasurement = (id, text, description) =>
+const addNewMeasurement = (id, description) =>
   new Promise((resolve, reject) => {
-    addNewMeasurementMethod.call({ id, text, description }, (err, res) => {
+    addNewMeasurementMethod.call({ id, description }, (err, res) => {
       if (err) {
         const error = new Error(err);
         reject(error);

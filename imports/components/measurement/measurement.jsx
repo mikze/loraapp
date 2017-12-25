@@ -61,9 +61,9 @@ export default class Measurement extends React.Component {
 
     return (
       <div>
-        {this.props.match.params.id}
+        <div id="title">{this.props.match.params.id}</div>
         <br />
-        {this.props.measurements.description}
+        <div>{this.props.measurements.description}</div>
         <br />
         <FlatButton
           label="Show/Hide measurements"
